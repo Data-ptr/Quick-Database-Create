@@ -26,7 +26,8 @@ module.exports = new function() {
                 }
 
                 var createDatabaseString =
-                    cds = 'CREATE DATABASE IF NOT EXIST ' + dbConfStruct.database;
+                    cds = 'CREATE DATABASE IF NOT EXIST ' +
+                        dbConfStruct.database;
 
                 /*
                 var addUserString =
@@ -82,7 +83,7 @@ module.exports = new function() {
                     dbConfStruct.password          = (pu.auth[1] ? pu.auth[1] : null);
 
                     //TODO: Check configuration values!
-                    return databaseConfigurationStruct;
+                    return databaseConfigurationStructure;
             }
             else {
                 console.error('Environment variable "' +
