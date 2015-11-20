@@ -3,37 +3,37 @@ var ChildProcess = require('child_process');
 
 module.exports = new function() {
     this.createDatabaseFrom = function(databaseConfiguration) {
-        var databaseConfigurationArray =
-            dbConfArr = this.parseConfig(databaseConfiguration);
+        var databaseConfigurationStructure =
+            dbConfStruct = this.parseConfig(databaseConfiguration);
 
-        switch(dbConfArr.options.dialect) {
+        switch(dbConfStruct.options.dialect) {
 
             default:
 
                 var argumentsArray =
-                    argArr =    [ '-h' + dbConfArr.options.host ];
+                    argArr =    [ '-h' + dbConfStruct.options.host ];
 
-                if(dbConfArr.username) {
-                    argArr.push('-u' + dbConfArr.username);
+                if(dbConfStruct.username) {
+                    argArr.push('-u' + dbConfStruct.username);
                 }
 
-                if(dbConfArr.password) {
-                    argArr.push('-p' + dbConfArr.password);
+                if(dbConfStruct.password) {
+                    argArr.push('-p' + dbConfStruct.password);
                 }
 
-                if(dbConfArr.options.port) {
-                    dbConfArr.push('-P' + dbConfArr.options.port);
+                if(dbConfStruct.options.port) {
+                    argArr.push('-P' + dbConfStruct.options.port);
                 }
 
                 var createDatabaseString =
-                    cds = 'CREATE DATABASE IF NOT EXIST ' + dbConfArr.database;
+                    cds = 'CREATE DATABASE IF NOT EXIST ' + dbConfStruct.database;
 
                 /*
                 var addUserString =
-                    aus = 'GRANT ALL ON `' + dbConfArr.database +
-                        '`.* to \'' + dbConfArr.username +
-                        '\'@\'' + dbConfArr.options.host +
-                        '\' IDENTIFIED BY \'' + dbConfArr.password +
+                    aus = 'GRANT ALL ON `' + dbConfStruct.database +
+                        '`.* to \'' + dbConfStruct.username +
+                        '\'@\'' + dbConfStruct.options.host +
+                        '\' IDENTIFIED BY \'' + dbConfStruct.password +
                         '\';';
                 */
 
@@ -49,8 +49,8 @@ module.exports = new function() {
     };
 
     this.parseConfig = function(databaseConfiguration) {
-        var databaseConfigurationArray =
-        dbConfArr = {
+        var databaseConfigurationStructure =
+        dbConfStruct = {
             options: {
                 //Valid: 'mysql'|'mariadb'|'sqlite'|'postgres'|'mssql'
                 dialect: undefined,
@@ -74,15 +74,15 @@ module.exports = new function() {
                     // Seperate user and password
                     pu.auth = pu.auth.split(':');
 
-                    dbConfArr.options.dialect   = pu.protocol;
-                    dbConfArr.options.host      = pu.hostname;
-                    dbConfArr.options.port      = pu.port;
-                    dbConfArr.database          = pu.pathname.split('/')[1];
-                    dbConfArr.username          = (pu.auth[0] ? pu.auth[0] : null);
-                    dbConfArr.password          = (pu.auth[1] ? pu.auth[1] : null);
+                    dbConfStruct.options.dialect   = pu.protocol;
+                    dbConfStruct.options.host      = pu.hostname;
+                    dbConfStruct.options.port      = pu.port;
+                    dbConfStruct.database          = pu.pathname.split('/')[1];
+                    dbConfStruct.username          = (pu.auth[0] ? pu.auth[0] : null);
+                    dbConfStruct.password          = (pu.auth[1] ? pu.auth[1] : null);
 
                     //TODO: Check configuration values!
-                    return databaseConfigurationArray;
+                    return databaseConfigurationStruct;
             }
             else {
                 console.error('Environment variable "' +
