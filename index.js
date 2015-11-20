@@ -75,9 +75,9 @@ module.exports = new function() {
                     pu.auth = pu.auth.split(':');
 
                     dbConfArr.options.dialect   = pu.protocol;
-                    dbConfArr.options.host      = pu.host;
+                    dbConfArr.options.host      = pu.hostname;
                     dbConfArr.options.port      = pu.port;
-                    dbConfArr.database          = pu.pathname;
+                    dbConfArr.database          = pu.pathname.split('/')[1];
                     dbConfArr.username          = (pu.auth[0] ? pu.auth[0] : null);
                     dbConfArr.password          = (pu.auth[1] ? pu.auth[1] : null);
 
