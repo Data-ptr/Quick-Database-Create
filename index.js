@@ -26,8 +26,8 @@ module.exports = new function() {
                 }
 
                 var createDatabaseString =
-                    cds = 'CREATE DATABASE IF NOT EXIST ' +
-                        dbConfStruct.database;
+                    cds = 'CREATE DATABASE IF NOT EXISTS `' +
+                        dbConfStruct.database + '`;';
 
                 /*
                 var addUserString =

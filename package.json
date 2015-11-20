@@ -1,6 +1,6 @@
 {
   "name": "quick_database_create",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Quickly creates a database from Sequelize configuration files (traditional and use_env_variable)",
   "main": "index.js",
   "scripts": {
