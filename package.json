@@ -1,0 +1,18 @@
+{
+  "name": "quick_database_create",
+  "version": "0.0.1",
+  "description": "Quickly creates a database from Sequelize configuration files (traditional and use_env_variable)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Sequelize",
+    "umzug",
+    "config.json",
+    "create",
+    "database"
+  ],
+  "author": "Jane Hacker",
+  "license": "ISC"
+}
